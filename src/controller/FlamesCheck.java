@@ -45,29 +45,29 @@ public class FlamesCheck extends HttpServlet {
 		
 		FlamesCheckService fcs = new FlamesCheckService();
 					
-		int k = fcs.findFlames(name1,name2);
+		char k = fcs.findFlames(name1,name2);
 		
-				if (k == 0) {
+				if (k == 'f') {
 					RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/friends.jsp");
 					rd.forward(request, response);
 				//	response.sendRedirect("/WEB-INF/views/friends.jsp");
-				} else if (k == 1) {
+				} else if (k == 'l') {
 					RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/lovers.jsp");
 					rd.forward(request, response);
 				//	response.sendRedirect("/WEB-INF/views/lovers.jsp");
-				} else if (k == 2) {
+				} else if (k == 'a') {
 					RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/affection.jsp");
 					rd.forward(request, response);
 				//	response.sendRedirect("/WEB-INF/views/affection.jsp");
-				} else if (k == 3) {
+				} else if (k == 'm') {
 					RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/marriage.jsp");
 					rd.forward(request, response);
 				//	response.sendRedirect("/WEB-INF/views/marriage.jsp");
-				} else if (k == 4) {
+				} else if (k == 'e') {
 					RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/enemies.jsp");
 					rd.forward(request, response);
 				//	response.sendRedirect("/WEB-INF/views/enemies.jsp");
-				} else if (k == 5) {
+				} else if (k == 's') {
 					RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/siblings.jsp");
 					rd.forward(request, response);
 				//	response.sendRedirect("/WEB-INF/views/siblings.jsp");
