@@ -3,7 +3,7 @@ package service;
 public class FlamesCheckService {
 
 	
-	public int findFlames(String name1, String name2) {
+	public char findFlames(String name1, String name2) {
 		String temp1 = name1.trim();
 		String temp2 = name2.trim();
 		temp1 = name1.toLowerCase();
@@ -18,47 +18,103 @@ public class FlamesCheckService {
 		for (int i = 0; i < temp2_split.length; i++) {
 			temp2 = temp2 + temp2_split[i];
 		}
-		int length = temp1.length() + name2.length();
-		boolean temp_check[] = new boolean[name2.length()];
-		for (int i = 0; i < temp2.length(); i++) {
-			temp_check[i] = false;
-		}
-		for (int i = 0; i < temp1.length(); i++) {
-			for (int j = 0; j < temp2.length(); j++) {
-				if ((temp_check[j] == false) && (temp1.charAt(i) == temp2.charAt(j))) {
-					temp_check[j] = true;
-					length = length - 2;
-					break;
-				}
-			}
-		}
-		boolean flames_check[] = new boolean[6];
-		for (int i = 0; i < 6; i++) {
-			flames_check[i] = true;
-		}
-		int count = 6;
-		int k = 1, deleted_letters = 0;
-		int j;
-		for (j = 0; j <= count; j++) {
-			if (k <= length) {
-				if (j == count) {
-					j = 0;
-				}
-				if (flames_check[j] == true) {
-					k = k + 1;
-				}
-			}
-			if ((k - 1) == length) {
-				deleted_letters = deleted_letters + 1;
-				flames_check[j] = false;
-				k = 1;
-			}
-			if (deleted_letters == 6) {
-				return j;
-			}
-		}
-		return 0;
-	}
-	
-	
+		StringBuilder sb1 = new StringBuilder(temp1);// converting to string builder
+        StringBuilder sb2 = new StringBuilder(temp2);
+       
+        int m=sb1.length();
+        int n=sb2.length();
+        for(int i=0; i<m;i++)
+        {
+            for(int j=0; j<n;j++)
+            {
+                if(sb1.charAt(i) == sb2.charAt(j))
+                {
+                    sb1.replace(i, i+1, "0"); // replacing matching characters into "0"
+                    sb2.replace(j,j+1,"0");
+                }
+            }
+        }
+ 
+        int x1=0;
+        int y1=0;
+        String s1="";
+        String s2="";
+        s1 = sb1.toString();
+        s2 = sb2.toString();
+            for(int i=0;i<s1.length();i++){ //length of string to remove 0 and find the length
+                if(s1.charAt(i)!='0'){
+                    System.out.print(" "+s1.charAt(i));
+                    x1 +=1;
+                    
+                 }
+            }
+            System.out.println();
+            System.out.println("First String: "+x1);
+    
+            for(int i=0;i<s2.length();i++){
+            if(s2.charAt(i)!='0'){
+                System.out.print(" "+s2.charAt(i));
+                y1 +=1;
+                
+                }
+            } 
+            System.out.println();
+            System.out.println("Second String: "+y1);
+       
+        
+        int x = x1+y1; // total length of remaining characters in both the strings
+        System.out.println("Length is: "+x);
+     
+        String flames = "flames";
+        StringBuilder sb3 = new StringBuilder(flames);
+        
+        char flameResult = 0;
+        
+        while(sb3.length()!=1)
+        {
+            int y = x%sb3.length(); 
+            String temp;
+            
+            if(y!=0)
+            {
+                temp = sb3.substring(y)+sb3.substring(0, y-1); // taking substring (counting purpose)
+                
+            }
+            else
+            {
+                temp = sb3.substring(0, sb3.length()-1); // taking substring (counting purpose)
+                
+            }
+            sb3 = new StringBuilder(temp);
+            flameResult = sb3.charAt(0);
+            
+        }
+        System.out.println(flameResult);
+        
+        switch(flameResult)
+        {
+            case 'f':
+                System.out.println("Friends");
+                break;
+            case 'l':
+                System.out.println("Love");
+                break;
+            case 'a':
+                System.out.println("Affection");
+                break;
+            case 'm':
+                System.out.println("Marriage");
+                break;
+            case 'e':
+                System.out.println("Enemies");
+                break;
+            case 's':
+                System.out.println("Sibling");
+                break;
+                
+        }
+        
+        return flameResult;
+    }
+
 }
