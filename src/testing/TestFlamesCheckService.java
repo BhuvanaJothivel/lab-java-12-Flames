@@ -11,25 +11,29 @@ public class TestFlamesCheckService {
 	public void testFindFlamesMethod() {
 		String name1 = "bhuvana";
 		String name2 = "abarna";
-		int temp = 0;
+		char temp = 'f';
 		assertEquals(temp,fcs.findFlames(name1, name2));
 		name1 = "Anand";
 		name2 = "Lavanya";
-		temp = 2;
+		temp = 'm';
 		assertEquals(temp,fcs.findFlames(name1, name2));
-		name1 = "jothivel";
-		name2 = "jegajothivel";
-		temp = 4;
+		name1 = "bhuvaneswari";
+		name2 = "abarna";
+		temp = 'a';
 		assertEquals(temp,fcs.findFlames(name1, name2));
 		name1 = "priyadharshini";
 		name2 = "karthikeyan";
 		temp = 3;
 		assertEquals(temp,fcs.findFlames(name1, name2));
-		name1 = "bhuvaneswari";
+		name1 = "bhuvana";
 		name2 = "gayathri";
-		temp = 1;
+		temp = 'e';
 		assertEquals(temp,fcs.findFlames(name1, name2));
-
+		name1 = "acxdgjikz";
+		name2 = "b";
+		temp = 'l';
+		assertEquals(temp,fcs.findFlames(name1, name2));
+		
 		try {
 			fcs.findFlames(null, null);
 			fcs.findFlames("AAA", null);
